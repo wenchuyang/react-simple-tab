@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import "./styles.css";
 
 function Tab1() {
@@ -9,22 +9,28 @@ function Tab2() {
 }
 
 function App() {
-  const init = window.location.hash === "#tab2" ? "tab2" : "tab1";
-  const [ui, setUi] = useState(init);
-  const onClickTab1 = () => {
-    setUi("tab1");
-    window.location.hash = "tab1";
-  };
-  const onClickTab2 = () => {
-    setUi("tab2");
-    window.location.hash = "tab2";
-  };
   return (
-    <div className="App">
-      <button onClick={onClickTab1}>tab1</button>
-      <button onClick={onClickTab2}>tab2</button>
-      {ui === "tab1" ? <Tab1 /> : <Tab2 />}
-    </div>
+    <Router>
+      <div className="App">
+        <Link to="/tab1">
+          <button>tab1</button>
+        </Link>
+        <Link to="/tab2">
+          <button>tab2</button>
+        </Link>
+        <Switch>
+          <Route path="/tab1">
+            <Tab1 />
+          </Route>
+          <Route path="/tab2">
+            <Tab2 />
+          </Route>
+          <Route path="/">
+            <Tab1 />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
