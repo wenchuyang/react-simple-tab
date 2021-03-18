@@ -1,10 +1,10 @@
 {
-  "name": "react",
+  "name": "tab",
   "version": "1.0.0",
-  "description": "React example starter project",
+  "description": "use react and react router to make a tab",
   "keywords": [
     "react",
-    "starter"
+    "react-router"
   ],
   "main": "src/index.js",
   "dependencies": {

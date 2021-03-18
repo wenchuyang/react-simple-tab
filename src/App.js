@@ -9,11 +9,20 @@ function Tab2() {
 }
 
 function App() {
-  const [ui, setUi] = useState("tab1");
+  const init = window.location.hash === "#tab2" ? "tab2" : "tab1";
+  const [ui, setUi] = useState(init);
+  const onClickTab1 = () => {
+    setUi("tab1");
+    window.location.hash = "tab1";
+  };
+  const onClickTab2 = () => {
+    setUi("tab2");
+    window.location.hash = "tab2";
+  };
   return (
     <div className="App">
-      <button onClick={() => setUi("tab1")}>tab1</button>
-      <button onClick={() => setUi("tab2")}>tab2</button>
+      <button onClick={onClickTab1}>tab1</button>
+      <button onClick={onClickTab2}>tab2</button>
       {ui === "tab1" ? <Tab1 /> : <Tab2 />}
     </div>
   );
